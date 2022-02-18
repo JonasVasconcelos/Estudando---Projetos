@@ -48,7 +48,7 @@ function atualizarInterface(){
         candidato = candidato[0];
         seuVotoPara.style.display = 'block';
         descricao.innerHTML = `Nome: ${candidato.nome}<br/>Partido: ${candidato.partido}`;
-        let fotoHtml = ''
+        let fotoHtml = '';
         for(let i in candidato.foto){
             fotoHtml += `<div class="image"><img src="imagens/${candidato.foto.url}" alt=""></div>`
         }
