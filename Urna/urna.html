@@ -13,21 +13,27 @@
             <div class="d-1">
                 <div class="d-1-left">
                     <div class="d-1-1">
-                        <span>SEU VOTO É PARA</span>
+                        <span>SEU VOTO É PARA:</span>
                     </div>
                     <div class="d-1-2">
-                        <span>VEREADOR:</span>
+                        <span>CANDIDATO</span>
                     </div>
                     <div class="d-1-3">
-                        ....ashuduahsduahs
+                        <div class="numero pisca"></div>
+                        <div class="numero"></div>
                     </div>
                     <div class="d-1-4">
-                        Nome: FULADO DE TAL <br/>
-                        Partido: PT<br/>
+                        VICE: FULADO DE TAL <br/>
+                        PARTIDO: PT<br/>
                     </div>
                 </div>
                 <div class="d-1-right">
-                    b2b222
+                    <div class="image">
+                        <img src="imagens/lula.png" alt="">
+                    </div>
+                    <div class="vazio">
+                        
+                    </div>
                 </div>
             </div>
             <div class="d-2">
@@ -39,27 +45,27 @@
 
         <div class="teclado">
             <div class="teclado--linha">
-                <div class="teclado--botao">1</div>
-                <div class="teclado--botao">2</div>
-                <div class="teclado--botao">3</div>
+                <div class="teclado--botao" onclick="clicou('1')">1</div>
+                <div class="teclado--botao" onclick="clicou('2')">2</div>
+                <div class="teclado--botao" onclick="clicou('3')">3</div>
             </div>
             <div class="teclado--linha">
-                <div class="teclado--botao">4</div>
-                <div class="teclado--botao">5</div>
-                <div class="teclado--botao">6</div>
+                <div class="teclado--botao" onclick="clicou('4')">4</div>
+                <div class="teclado--botao" onclick="clicou('5')">5</div>
+                <div class="teclado--botao" onclick="clicou('6')">6</div>
             </div>
             <div class="teclado--linha">
-                <div class="teclado--botao">7</div>
-                <div class="teclado--botao">8</div>
-                <div class="teclado--botao">9</div>
+                <div class="teclado--botao" onclick="clicou('7')">7</div>
+                <div class="teclado--botao" onclick="clicou('8')">8</div>
+                <div class="teclado--botao" onclick="clicou('9')">9</div>
             </div>
             <div class="teclado--linha">
-                <div class="teclado--botao">0</div>
+                <div class="teclado--botao" onclick="clicou('0')">0</div>
             </div>
             <div class="teclado--linha">
-                <div class="teclado--botao botao--branco">Branco</div>
-                <div class="teclado--botao botao--verde" >Confirma</div>
-                <div class="teclado--botao botao--vermelho">Corrige</div>
+                <div class="teclado--botao botao--branco" onclick="branco()">Branco</div>
+                <div class="teclado--botao botao--verde"  onclick="confirma()">Confirma</div>
+                <div class="teclado--botao botao--vermelho" onclick="corrija()">Corrige</div>
             </div>
         </div>
     </div>
@@ -67,6 +73,7 @@
 
 
 
+    <script src="dados.js"></script>
     <script src="urna.js"></script>
 </body>
 </html>
