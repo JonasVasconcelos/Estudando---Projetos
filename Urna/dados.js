@@ -19,7 +19,7 @@ let dados = [
                 numero: '12',
                 nome: 'Ciro Gomes',
                 partido: 'PDT',
-                foto: {url:'bolsonaro.png'}
+                foto: {url:'ciro.png'}
             }
         ]
     }

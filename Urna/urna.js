@@ -14,6 +14,8 @@ function comecarEtapa(){
     let etapa = dados[etapaAtual];
     let numerosHtml = '';
 
+    numero = '';
+
     for(let i = 0; i < etapa.numeros; i++){
         if(i === 0){
             numerosHtml.innerHTML += '<div class="numero pisca"></div>';    
@@ -48,9 +50,13 @@ function atualizarInterface(){
         descricao.innerHTML = `Nome: ${candidato.nome}<br/>Partido: ${candidato.partido}`;
         let fotoHtml = ''
         for(let i in candidato.foto){
-            fotoHtml += `<div class="image"><img src="imagens/${candidato.foto[i].url} alt=""></div>`
+            fotoHtml += `<div class="image"><img src="imagens/${candidato.foto.url}" alt=""></div>`
         }
         imagens.innerHTML = fotoHtml;
+    }else{
+        seuVotoPara.style.display = 'block';
+        aviso.style.display = 'block';
+        descricao.innerHTML = '<div class="aviso--grande pisca">VOTO NULO</div>'
     }
 }
 
@@ -78,7 +84,10 @@ function confirma(){
 }
 
 function corrija(){
-    window.alert("Clicou em corrigir")
+    comecarEtapa();
 }
 
+
+
 comecarEtapa()
+
