@@ -1,93 +1,94 @@
-//Controle de interface
-let seuVotoPara = document.querySelector('.d-1-1 span');
-let cargo = document.querySelector('.d-1-2 span');
-let descricao = document.querySelector('.d-1-4');
-let aviso = document.querySelector('.d-2');
-let imagens = document.querySelector('.image');
-let numeros = document.querySelector('.numero');
+let seuVotoPara = document.querySelector(".d-1-1 span");
+let cargo = document.querySelector(".d-1-2 span");
+let descricao = document.querySelector(".d-1-4");
+let aviso = document.querySelector(".d-2");
+let lateral = document.querySelector(".d-1-right");
+let numeros = document.querySelector(".d-1-3");
 
 let etapaAtual = 0;
-let numero = "";
-
+let Numero = '';
+let branco = false
 
 function comecarEtapa(){
     let etapa = dados[etapaAtual];
-    let numerosHtml = '';
-
-    numero = '';
+    let numeroHtml = '';
+    
+    Numero = '';
+    branco = false
 
     for(let i = 0; i < etapa.numeros; i++){
         if(i === 0){
-            numerosHtml.innerHTML += '<div class="numero pisca"></div>';    
+            numeroHtml += '<div class="numero pisca"></div>';
+        } else{
+            numeroHtml += '<div class="numero"></div>';
         }
-        numerosHtml.innerHTML += '<div class="numero"></div>';
     }
 
-    seuVotoPara.style.display="none";
+    seuVotoPara.style.display = "none";
     cargo.innerHTML = etapa.titulo;
-    descricao.innerHTML = "";
+    aviso.style.display = "none";
 
-    aviso.style.display = 'none';
-    imagens.innerHTML = '';
-    numeros.innerHTML = numerosHtml;
+    descricao.innerHTML = "";
+    lateral.innerHTML = "";
+    numeros.innerHTML = numeroHtml;
 }
 
-
-
-//Funções
 function atualizarInterface(){
     let etapa = dados[etapaAtual];
-    let candidato = etapa.candidatos.filter((item)=>{
-            if(item.numero === numero){
-                return true;
-            } else{
-                return false;
-            }
-        });
+    let candidato = etapa.candidatos.filter((item) =>{
+        if(item.numero === Numero){
+            return true;
+        }else{
+            return false;
+        }
+    });
     if(candidato.length > 0){
         candidato = candidato[0];
-        seuVotoPara.style.display = 'block';
-        descricao.innerHTML = `Nome: ${candidato.nome}<br/>Partido: ${candidato.partido}`;
-        let fotoHtml = '';
-        for(let i in candidato.foto){
-            fotoHtml += `<div class="image"><img src="imagens/${candidato.foto.url}" alt=""></div>`
-        }
-        imagens.innerHTML = fotoHtml;
+        seuVotoPara.style.display = "block";
+        aviso.style.display = "block"
+        descricao.innerHTML = `Nome: ${candidato.nome}<br/>Partido: ${candidato.partido}`
+
+        lateral.innerHTML = `<div class="img"><img src="imagens/${candidato.foto.url}" alt=""></div>`;
     }else{
-        seuVotoPara.style.display = 'block';
-        aviso.style.display = 'block';
-        descricao.innerHTML = '<div class="aviso--grande pisca">VOTO NULO</div>'
+        seuVotoPara.style.display = "block";
+        aviso.style.display = "block"
+        descricao.innerHTML = `<div class = "aviso--grande pisca">VOTO NULO<div/>`;
     }
 }
 
 function clicou(n){
-    let elNumero = document.querySelector('.numero.pisca');
-    if(elNumero !== null ){
-        elNumero.innerHTML = n;
-        numero = `${numero}${n}`;
-    }
+    let etapa = dados[etapaAtual];
+    let num = document.querySelector(".numero.pisca");
+    if(num !== null){
+        num.innerHTML = n;
+        Numero = `${Numero}${n}`;
 
-    elNumero.classList.remove('pisca');
-    if(elNumero.nextElementSibling !== null){
-        elNumero.nextElementSibling.classList.add('pisca');
-    }else{
-        atualizarInterface();
+        num.classList.remove('pisca');
+        if(num.nextElementSibling !== null){
+            num.nextElementSibling.classList.add('pisca');
+        }else{
+            atualizarInterface()
+        }
     }
 }
 
-function branco(){
-    window.alert("Clicou em branco")
+function brancobt(){
+    descricao.innerHTML = `<div class = "aviso--grande pisca">VOTO EM BRANCO<div/>`;
+    branco = true;
+    seuVotoPara.style.display = "block";
+    aviso.style.display = "block";
+    numeros.innerHTML = '';
+}
+
+function corrige(){
+    comecarEtapa()
 }
 
 function confirma(){
-    window.alert("Clicou em confirmar")
+    let etapa = dados[etapaAtual];
+    if(Numero.length===etapa.numeros | branco==true){
+        document.querySelector('.tela').innerHTML = `<div class = "aviso--gigante pisca">FIM<div/>`;
+    }
 }
-
-function corrija(){
-    comecarEtapa();
-}
-
-
 
 comecarEtapa()
-
